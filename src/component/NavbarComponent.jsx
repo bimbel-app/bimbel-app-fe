@@ -1,12 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import { navLinks } from "../data/index";
+import { Link, NavLink, useLocation } from "react-router-dom"; // Import useLocation
 import logo from "../assets/img/testimonial/logo.jpeg";
+import { AuthContext } from "../context/auth.context";
+import { navLinks } from "../data";
 
 const NavbarComponent = () => {
   const [changeColor, setChangeColor] = useState(false);
+  const auth = useContext(AuthContext);
+  const location = useLocation(); // Gunakan useLocation
 
   const changeBackgroundColor = () => {
     if (window.scrollY > 10) {
@@ -26,6 +28,16 @@ const NavbarComponent = () => {
     };
   }, []);
 
+  // Update navLinks based on authentication status
+  const updatedNavLinks = navLinks.map((link) => {
+    if (link.text === "Login") {
+      return auth.isLoggedIn
+        ? { ...link, path: "/logout", text: "Logout" }
+        : link;
+    }
+    return link;
+  });
+  
   return (
     <div>
       <Navbar expand="md" className={changeColor ? "color-active" : ""}>
@@ -39,7 +51,7 @@ const NavbarComponent = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto text-center">
-              {navLinks.map((link) => (
+              {updatedNavLinks.map((link) => (
                 <div className="nav-link" key={link.id}>
                   <NavLink
                     to={link.path}

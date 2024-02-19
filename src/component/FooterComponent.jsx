@@ -36,7 +36,7 @@ const FooterComponent = () => {
             <a href="/">Home</a>
             <a href="/Class">Kelas</a>
             <a href="/faq">FAQ</a>
-            <a href="/MenuLainnya">Menu Lainnya</a>
+            <a href="/Lainnya">Menu Lainnya</a>
           </Col>
 
         </Row>

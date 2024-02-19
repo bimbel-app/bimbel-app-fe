@@ -1,8 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap";
 import HeroImage from "../assets/img/buku.png";
 
-import { kelasTerbaru, dataSwiper } from "../data/index";
-import { useNavigate } from "react-router-dom";
+import { kelasTerbaru } from "../data/index";
+import { useNavigate, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FaqComponent from "../component/FaqComponent";
 import 'swiper/css';
 import 'swiper/css/pagination';
