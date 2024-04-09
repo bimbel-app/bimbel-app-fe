@@ -12,6 +12,25 @@ import People1 from "../assets/img/testimonial/profile.jpg";
 import People2 from "../assets/img/testimonial/profile.jpg";
 import People3 from "../assets/img/testimonial/profile.jpg";
 
+
+export const activeUrls = [{
+  name: 'siswa',
+  url: '/dashboard/data_siswa/'
+},
+{
+  name: 'tentor',
+  url: '/dashboard/data_tentor/'
+},
+{
+  name: 'jadwal',
+  url: '/dashboard/data_jadwal/'
+},
+{
+  name: 'mapel',
+  url: '/dashboard/data_mapel/'
+}
+]
+
 export const navLinks = [
   {
     id: 1,

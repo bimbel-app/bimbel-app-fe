@@ -3,8 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const FooterComponent = () => {
   return (
-    <div class="fixed-bottom container">
-  <footer class="py-3 my-4">
+  <footer class="sticky-bottom py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
@@ -14,7 +13,6 @@ const FooterComponent = () => {
     </ul>
     <p class="text-center text-muted">© 2022 Company, Inc</p>
   </footer>
-</div>
   );
 };
 

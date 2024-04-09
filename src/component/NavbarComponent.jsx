@@ -7,8 +7,9 @@ import { navLinks } from "../data";
 
 const NavbarComponent = () => {
   const [changeColor, setChangeColor] = useState(false);
-  const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext); 
   const location = useLocation(); // Gunakan useLocation
+
 
   const changeBackgroundColor = () => {
     if (window.scrollY > 10) {
@@ -32,7 +33,7 @@ const NavbarComponent = () => {
   const updatedNavLinks = navLinks.map((link) => {
     if (link.text === "Login") {
       return auth.isLoggedIn
-        ? { ...link, path: "/logout", text: "Logout" }
+        ? { ...link, path: "/login", text: "Login" }
         : link;
     }
     return link;

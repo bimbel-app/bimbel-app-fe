@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { semuaKelas } from "../data/index";
 import FaqComponent from "../component/FaqComponent";
+import "../assets/styles/kelas.css"
 
 const Classpages = () => {
   const [selectedSubject, setSelectedSubject] = useState(null);
 
-  const handleClick = (subject) => {
-    setSelectedSubject(subject);
-  };
+  // const handleClick = (subject) => {
+  //   setSelectedSubject(subject);
+  // };
 
   const getSubjectInfo = (subject) => {
     // Ganti informasi mata pelajaran berdasarkan nama mata pelajaran yang dipilih
@@ -35,7 +36,7 @@ const Classpages = () => {
     }
   };
 
-  const subjectInfo = selectedSubject ? getSubjectInfo(selectedSubject) : null;
+  //const subjectInfo = selectedSubject ? getSubjectInfo(selectedSubject) : null;
 
   return (
     <div className="kelas-page">
@@ -66,7 +67,6 @@ const Classpages = () => {
                     {kelas.title}
                   </span>
                 </h5>
-                {subjectInfo && (
                   <div className="informasi-matpel text-center">
                     <Container>
                       <Row>
@@ -76,23 +76,22 @@ const Classpages = () => {
                               <Card.Title>
                                 <h2>{selectedSubject}</h2>
                               </Card.Title>
-                              <Card.Text>Jadwal: {subjectInfo.jadwal}</Card.Text>
-                              <Card.Text>Tentor: {subjectInfo.tentor}</Card.Text>
-                              <Card.Text>{subjectInfo.informasiLainnya}</Card.Text>
+                              <Card.Text>Jadwal:</Card.Text>
+                              <Card.Text>Tentor:</Card.Text>
+                              <Card.Text></Card.Text>
                             </Card.Body>
                           </Card>
                         </Col>
                       </Row>
                     </Container>
                   </div>
-                )}
                 <div className="ket d-flex justify-content-between align-items-center px-3 pb-3"></div>
               </Col>
             ))}
           </Row>
         </Container>
       </div>
-      <FaqComponent subjectInfo={subjectInfo} />
+      <FaqComponent/>
     </div>
   );
 };

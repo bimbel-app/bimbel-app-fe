@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const FooterComponent = () => {
   return (
-    <div className="footer py-5">
+    <div className="footer py-5 width-full">
       <Container>
         <Row className="d-flex justify-content-between">
           <Col lg="5">
