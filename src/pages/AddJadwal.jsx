@@ -2,19 +2,21 @@ import axios from "axios"
 import { useState } from "react"
 import { Button, Container, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import { SuccessAdd } from "../component/Dashboard/SuccessModal"
 
 export const AddJadwal= ()=>{
-    
+  const days = ["Senin", "Selasa","Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"]
     const  [tanggal, setTanggal] = useState("")
     const  [waktu, setWaktu] = useState("")
-    const  [hari, setHari] = useState("")
+    const  [hari, setHari] = useState(days[0])
     const [validation, setValidation] = useState([])
-    
+    const [showState, setShowState] = useState(false)
+
     const url = "http://127.0.0.1:8000/api/jadwal/add"
     
     const formData = new FormData
     const navigate = useNavigate()
-    const days = ["Senin", "Selasa","Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"]
+
     const date = new Date(tanggal)
     const dateFormat = date.toLocaleString('id-ID', {day:'numeric', month:'long', year:'numeric'})
 
@@ -27,14 +29,18 @@ export const AddJadwal= ()=>{
         
         const response = await axios.post(url, formData)
 
-        alert(response.data.message);
+        setShowState(true)
         } catch (error) {
             console.error(error)
+            console.log({"tanggal":dateFormat,
+              "waktu":waktu,
+              "hari":hari
+            });
         }
     }
     return(
         <Container>
-      <div className="title fw-bold text-center py-2">Tambah Tentor</div>
+      <div className="title fw-bold text-center py-2">Tambah Jadwal</div>
       <div className='content'>
           {/* <div className='user-details'>
             <div className='input-box'>
@@ -74,7 +80,7 @@ export const AddJadwal= ()=>{
           </div> */}
 <form onSubmit={submitHandler}>
         
-          {/* <form onSubmit={submitHandler}> */}
+          {showState && <SuccessAdd/>}
           <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
@@ -95,10 +101,10 @@ export const AddJadwal= ()=>{
               >
                 <Form.Label>Hari</Form.Label>
                 <Form.Select id="select" value={hari} onChange={(e)=>setHari(e.target.value)} >
-                {days.map((day)=>{
+                {days.map((day, index)=>{
                 console.log();
                 return(
-                  <option value={day}>{day}</option>
+                  <option key={index} value={day}>{day}</option>
                 )
                 })
               }

@@ -1,30 +1,65 @@
 import { useState, useContext } from "react";
-import { Navigate, NavLink, useLocation } from "react-router-dom";
-import  {NavLink as Kontol} from "react-bootstrap";
+import { NavLink, Navigate, useLocation, useNavigate } from "react-router-dom";
+// import  { NavLink } from "react-bootstrap";
 import Cookies from "universal-cookie";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+// import {useNavigate, useLocation} from 'react';
 import { AuthContext } from "../../context/auth.context-copy";
+
 export const Sidebar = () => {
   const auth = useContext(AuthContext);
   // const navigate = new Navigate()
   const [isOpen, setIsOpen] = useState(false)
-  
+  const [showState, setShowState] = useState(false)
   const navLinks = [
-    {id:1, name:"asdasd", href:"dashboard/data_siswa/index"},
-    {id:2, name:"asdasd", href:"dashboard/data_tentor/index"},
-    {id:3, name:"asdasd", href:"dashboard/data_mapel/index"},
-    {id:4, name:"asdasd", href:"dashboard/data_jadwal/index"}
+    {id:1, name:"Data Siswa", href:"dashboard/data_siswa/index"},
+    {id:2, name:"Data Tentor", href:"dashboard/data_tentor/index"},
+    {id:3, name:"Data Mapel", href:"dashboard/data_mapel/index"},
+    {id:4, name:"Data Jadwal", href:"dashboard/data_jadwal/index"},
+    {id:5, name:"Logout", href: "", },
+    
   ]
-
+  const navigate = useNavigate();
+  const cookies = new Cookies();
+  
   const location = useLocation()
   const current = location.pathname
-
-
+  
+  const handleLogout = ()=>setShowState(false)
   const handleClick=()=>{
     setIsOpen(!isOpen)
   }
-  
 
+    const [show, setShow] = useState(false);
+    const handleShow = () => setShow(isShow);
+    const handleClose = () => setShow(false);  
+    const handleNav = ()=> navigate("/login")
+  
   return (
+    <>
+      {/* <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button> */}
+
+      {/* <Modal show={handleShow} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Logout</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Silahkan Login Kembali</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary">
+          <NavLink href={location.pathname}
+                    tabindex="0"
+                    aria-controls="example1"
+                    type="button"
+                  >
+                    <span>Kembali</span>
+                  </NavLink>{" "}
+          </Button>
+        </Modal.Footer>
+      </Modal> */}
+
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       <a href="index3.html" className="brand-link">
         {/* <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3"/> */}
@@ -96,11 +131,11 @@ export const Sidebar = () => {
             <li className={`nav-item ${isOpen ? "menu-is-opening menu-open": ""}`}>
             {navLinks.map((i)=>{
             return(
-                // <Kontol>
+              
               <NavLink key={i.id} className={({isActive})=>{return "nav-link " + (isActive ? "active" : "")}} to={i.href}>
                 <p>{i.name}</p>
               </NavLink>
-              /* </Kontol> */
+              
             )})
           }
           </li>
@@ -109,5 +144,6 @@ export const Sidebar = () => {
         </nav>
       </div>
     </aside>
+    </>
   );
 };

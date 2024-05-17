@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { Container, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import { SuccessAdd } from "../component/Dashboard/SuccessModal"
 
 export const AddSiswa= ()=>{
     
@@ -9,6 +10,7 @@ export const AddSiswa= ()=>{
     const  [asalSekolah, setAsalSekolah] = useState("")
     const  [pendidikan, setPendidikan] = useState("")
     const  [alamat, setAlamat] = useState("")
+    const [showState, setShowState] = useState(false)
     
     const [validation, setValidation] = useState([])
     const url = "http://127.0.0.1:8000/api/siswa/add"
@@ -24,9 +26,10 @@ export const AddSiswa= ()=>{
           formData.append("alamat", alamat)
         
         const response = await axios.post(url, formData)
-
-        console.log(response);
-        } catch (error) {
+        setShowState(true)
+        // console.log(window.location.pathname) 
+      } catch (error) {
+          // console.log(response);
           console.log(formData);
             console.error(error)
         }
@@ -73,7 +76,7 @@ export const AddSiswa= ()=>{
           </div> */}
 <form onSubmit={submitHandler}>
         
-          {/* <form onSubmit={submitHandler}> */}
+          {showState && <SuccessAdd isShow={showState} />}
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"

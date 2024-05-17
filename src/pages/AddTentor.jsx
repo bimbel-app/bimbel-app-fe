@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { Container, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import { SuccessAdd } from "../component/Dashboard/SuccessModal"
 
 export const AddTentor= ()=>{
     
@@ -11,7 +12,7 @@ export const AddTentor= ()=>{
     const  [alamat, setAlamat] = useState("")
     const  [pengalaman, setPengalaman] = useState("")
     const  [keterangan, setKeterangan] = useState("")
-    
+    const [showState, setShowState] = useState(false)
     const [validation, setValidation] = useState([])
     const url = "http://127.0.0.1:8000/api/tentor/add"
     
@@ -30,13 +31,14 @@ export const AddTentor= ()=>{
           
         
         const response = await axios.post(url, formData)
-
+        setShowState(true)
         console.log(response);
         } catch (error) {
             console.error(error)
         }
     }
     return(
+      
         <Container>
       <div className="title fw-bold text-center py-2">Tambah Tentor</div>
       <div className='content'>
@@ -77,7 +79,7 @@ export const AddTentor= ()=>{
             </div>
           </div> */}
 <form onSubmit={submitHandler}>
-        
+        {showState && <SuccessAdd/>}
           {/* <form onSubmit={submitHandler}> */}
               <Form.Group
                 className="mb-3"
