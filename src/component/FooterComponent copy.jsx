@@ -3,16 +3,25 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const FooterComponent = () => {
   return (
-  <footer class="sticky-bottom py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-    </ul>
-    <p class="text-center text-muted">© 2022 Company, Inc</p>
-  </footer>
+    <footer className="footer py-5">
+      <Container className="d-flex justify-content-center">
+        <Row className="gap-1 mb-3">
+          <Col>
+            <a href="/" className="">Home</a>
+          </Col>
+          <Col>
+            <a href="/Class" className="">Class</a>
+          </Col>
+          <Col>
+            <a href="/FAQ" className="">FAQ</a>
+          </Col>
+          <Col>
+            <a href="/Testimonial" className="">Testimonial</a>
+          </Col>
+        </Row>
+      </Container>
+      <p className="text-center px-md-0 px-3">&copy; Copyright {new Date().getFullYear()} by <span className="fw-bold">Annisa & Septi</span></p>
+    </footer>
   );
 };
 

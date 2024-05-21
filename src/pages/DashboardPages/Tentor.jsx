@@ -5,9 +5,9 @@ import { Button, Form, Modal } from "react-bootstrap"
 import { NavLink } from "react-bootstrap"
 
 export const Tentor = ()=>{
-    const url = "http://127.0.0.1:8000/api/tentor/index"
-    const urlEdit = `http://127.0.0.1:8000/api/tentor/edit`
-    const urlDelete = `http://127.0.0.1:8000/api/tentor/delete`
+    const url = "http://127.0.0.1:8080/api/tentor/index"
+    const urlEdit = `http://127.0.0.1:8080/api/tentor/edit`
+    const urlDelete = `http://127.0.0.1:8080/api/tentor/delete`
     
     const [tentor, setTentor] = useState([]);
     const [tentorModal, setTentorModal] = useState() //menampung data tentor untuk edit dan delete
@@ -65,7 +65,8 @@ export const Tentor = ()=>{
         formData.append("pengalaman", pengalaman)
         formData.append("keterangan", keterangan)
         const id = tentorModal.id_tentor
-        await axios.post(`${urlEdit}/${id}`, formData)
+        const response = await axios.post(`${urlEdit}/${id}`, formData)
+        console.log(response)
       } catch (error) {
         console.error(error);
       }
@@ -108,28 +109,28 @@ export const Tentor = ()=>{
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Nama</Form.Label>
-                <Form.Control type="text" defaultValue={nama} />
+                <Form.Control type="text" defaultValue={nama} onChange={(e)=>setNama(e.target.value)}/>
               </Form.Group>
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Asal Sekolah</Form.Label>
-                <Form.Control type="text" defaultValue={asalSekolah} />
+                <Form.Control type="text" defaultValue={asalSekolah} onChange={(e)=>setNama(e.target.value)}/>
               </Form.Group>
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Pendidikan</Form.Label>
-                <Form.Control type="text" placeholder="1 SD" />
+                <Form.Control type="text" placeholder="1 SD" defaultValue={pendidikan} onChange={(e)=>setPendidikan(e.target.value)}/>
               </Form.Group>
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Alamat</Form.Label>
-                <Form.Control type="text" placeholder="Purbalingga" />
+                <Form.Control type="text" placeholder="Purbalingga" defaultValue={alamat} onChange={(e)=>setAlamat(e.target.value)}/>
               </Form.Group>
             </Form>
           </Modal.Body>

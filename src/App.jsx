@@ -21,12 +21,12 @@ import Logout from "./pages/Logout.jsx"
 import DashboardLayout from "./DashboardLayout.jsx";
 import { PrivateRoute } from "./component/PrivateRoutes.jsx";
 import MainLayout from "./MainLayout.jsx";
-import { Siswa } from "./pages/Siswa.jsx";
-import { Tentor } from "./pages/Tentor.jsx";
+import { Siswa } from "./pages/DashboardPages/Siswa.jsx";
+import { Tentor } from "./pages/DashboardPages/Tentor.jsx";
 import { DashboardNavbar } from "./component/Dashboard/DashboardNavbar.jsx";
 import { Sidebar } from "./component/Dashboard/Sidebar.jsx";
-import { Jadwal } from "./pages/Jadwal.jsx";
-import { MataPelajaran } from "./pages/MataPelajaran.jsx";
+import { Jadwal } from "./pages/DashboardPages/Jadwal.jsx";
+import { MataPelajaran } from "./pages/DashboardPages/MataPelajaran.jsx";
 import { CookiePage } from "./pages/cookies.jsx";
 import { AddSiswa } from "./pages/AddSiswa.jsx";
 import { AuthContext } from "./context/auth.context-copy.jsx";
@@ -35,6 +35,7 @@ import { AddJadwal } from "./pages/AddJadwal.jsx";
 import { Playground } from "./Playground.jsx";
 import { AddMapel } from "./pages/AddMapel.jsx";
 import { NotFound } from "./NotFound.jsx";
+import { testimonial } from "./data/index.js";
 
 function App() {  
   const [isAuth, setIsAuth] = useState()
@@ -85,6 +86,7 @@ function App() {
       <Route path="/DataTentor" Component={Datatentor} />
       <Route path="/playground" Component={Playground} />
       <Route path="/logout" Component={Logout} />
+      <Route path="/Testimonial" Component={testimonial} />
       <Route path="*" Component={NotFound} />
       
     </Routes>

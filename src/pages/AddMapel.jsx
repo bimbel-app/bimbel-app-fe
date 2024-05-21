@@ -2,13 +2,14 @@ import axios from "axios"
 import { useState } from "react"
 import { Container, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import { SuccessAdd } from "../component/Dashboard/SuccessModal"
 
 export const AddMapel= ()=>{
     
     const  [mapel, setMapel] = useState("")
     const [validation, setValidation] = useState([])
     const url = "http://127.0.0.1:8000/api/mapel/add"
-    
+    const [showState, setShowState] = useState(false)
     const formData = new FormData
     const navigate = useNavigate()
     const submitHandler = async (e)=>{
@@ -16,8 +17,9 @@ export const AddMapel= ()=>{
           formData.append("nama_mapel", mapel)
         
         const response = await axios.post(url, formData)
-        alert(response.data.message)
+        setShowState(true)
         console.log(response);
+        
         } catch (error) {
           console.log(formData);
             console.error(error)
@@ -64,7 +66,7 @@ export const AddMapel= ()=>{
             </div>
           </div> */}
 <form onSubmit={submitHandler}>
-        
+        {showState && <SuccessAdd/>}
               <Form.Group
                 className="mb-3"
                 controlId="AddMapelForm.ControlInput1"

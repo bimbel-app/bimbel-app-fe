@@ -15,6 +15,7 @@ import Registrasi from "./pages/Registrasi";
 import Datasiswa from "./pages/Datasiswa.jsx"
 import Datatentor from "./pages/Datatentor.jsx";
 import Logout from "./pages/Logout.jsx"
+import { testimonial } from './data/index.js';
 
 // import "./dist/css/main.css";
 import "animate.css";

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "../dist/css/main.css";
@@ -46,7 +46,12 @@ const Registrasi = () => {
 
   return (
     <Container>
-      <div className="title fw-bold text-center py-2">Formulir Registrasi</div>
+      <Row>
+        <Col>
+        <h3>Tertarik untuk mendaftar</h3>
+        </Col>
+      </Row>
+      {/* <div className="title fw-bold text-center py-2">Formulir Registrasi</div>
       <div className='content'>
         <form onSubmit={registerHandler}>
           <div className='user-details'>
@@ -88,7 +93,7 @@ const Registrasi = () => {
             </div>
           </div>
         </form>
-      </div>
+      </div> */}
     </Container>
   );
 };

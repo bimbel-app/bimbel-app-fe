@@ -2,8 +2,8 @@ import React, { useState, createContext, useEffect } from "react";
 import { DashboardNavbar } from "./component/Dashboard/DashboardNavbar";
 import { Sidebar } from "./component/Dashboard/Sidebar";
 import Dashboard from "./pages/Dashboard";
-import { Siswa } from "./pages/Siswa";
-import { Tentor } from "./pages/Tentor";
+import { Siswa } from "./pages/DashboardPages/Siswa";
+import { Tentor } from "./pages/DashboardPages/Tentor";
 
 import { Routes,Route, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -29,7 +29,7 @@ useEffect(()=>{
         }else{
         setIsLoggedIn(false)
         alert("logij lagi")
-        navigate("/login")
+        navigate("/dashboard")
         }
 }, [])
     

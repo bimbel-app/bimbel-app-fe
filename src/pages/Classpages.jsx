@@ -2,41 +2,110 @@ import React, { useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { semuaKelas } from "../data/index";
 import FaqComponent from "../component/FaqComponent";
-import "../assets/styles/kelas.css"
+import "../assets/styles/kelas.css";
 
 const Classpages = () => {
   const [selectedSubject, setSelectedSubject] = useState(null);
 
-  // const handleClick = (subject) => {
-  //   setSelectedSubject(subject);
-  // };
+  const handleClick = (subject) => {
+    setSelectedSubject(selectedSubject === subject ? null : subject); // Mengubah selectedSubject menjadi null jika subject yang diklik sama dengan yang sudah dipilih sebelumnya
+  };
 
   const getSubjectInfo = (subject) => {
     // Ganti informasi mata pelajaran berdasarkan nama mata pelajaran yang dipilih
     switch (subject) {
-      case "MataPelajaran1":
+      case "Matematika":
         return {
-          jadwal: "Senin - Jumat, 10:00 - 12:00",
-          tentor: "Tentor1",
-          informasiLainnya: "Informasi tambahan tentang Mata Pelajaran 1.",
+          jadwal : "",
+          tentor : "",
+          informasiLainnya: "",
         };
-      case "MataPelajaran2":
+      case "Bahasa Inggris":
         return {
-          jadwal: "Senin - Jumat, 13:00 - 15:00",
-          tentor: "Tentor2",
-          informasiLainnya: "Informasi tambahan tentang Mata Pelajaran 2.",
+          jadwal : "",
+          tentor : "",
+          informasiLainnya: "",
+        };
+      case "Pendidikan Agama Islam":
+        return {
+          jadwal : "",
+          tentor : "",
+          informasiLainnya: "",
+        };
+      case "Bahasa Indonesia":
+        return {
+          jadwal : "",
+          tentor : "",
+          informasiLainnya: "",
+        };
+      case "Fisika":
+        return {
+          jadwal : "",
+          tentor : "",
+          informasiLainnya: "",
+        };
+      case "Kimia":
+        return {
+          jadwal : "",
+          tentor : "",
+          informasiLainnya: "",
+        };
+      case "Ilmu Pengetahuan Alam":
+        return {
+          jadwal : "",
+          tentor : "",
+          informasiLainnya: "",
+        };
+      case "Ilmu Pengetahuan Sosial":
+        return {
+          jadwal : "",
+          tentor : "",
+          informasiLainnya: "",
+        };
+      case "Pendidikan Kewarganegaraan":
+        return {
+          jadwal : "",
+          tentor : "",
+          informasiLainnya: "",
         };
       // Tambahkan case untuk mata pelajaran lainnya sesuai kebutuhan
       default:
         return {
-          jadwal: "Belum ada jadwal",
-          tentor: "Belum ada tentor",
-          informasiLainnya: "Informasi tambahan belum tersedia.",
+          jadwal : "Belum ditentukan",
+          tentor : "Belum ditentukan",
+          informasiLainnya: "Informasi lebih lanjut akan segera tersedia.",
         };
     }
   };
 
-  //const subjectInfo = selectedSubject ? getSubjectInfo(selectedSubject) : null;
+  const renderSubjectInfo = () => {
+    if (!selectedSubject) return null;
+
+    const subjectInfo = getSubjectInfo(selectedSubject);
+
+    return (
+      <div className="informasi-matpel text-center">
+        <Container>
+          <Row>
+            <Col>
+              <Card>
+                <Card.Body>
+                  <Card.Title>
+                    <h2>{selectedSubject}</h2>
+                  </Card.Title>
+                  <Card.Text>
+                    <p>Jadwal: {subjectInfo.jadwal}</p>
+                    <p>Tentor: {subjectInfo.tentor}</p>
+                    <p>{subjectInfo.informasiLainnya}</p>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
+  };
 
   return (
     <div className="kelas-page">
@@ -44,7 +113,7 @@ const Classpages = () => {
         <Container>
           <Row>
             <Col>
-              <h1 className="fw-bold text-center animate__animated animate__fadeInUp animate__delay-1s">
+              <h1 className="fw-bold text-center animate__animated animate__fadeInUp animate__delay-1s" style={{ paddingTop: '50px' }}>
                 Mata Pelajaran
               </h1>
             </Col>
@@ -67,31 +136,20 @@ const Classpages = () => {
                     {kelas.title}
                   </span>
                 </h5>
-                  <div className="informasi-matpel text-center">
-                    <Container>
-                      <Row>
-                        <Col>
-                          <Card>
-                            <Card.Body>
-                              <Card.Title>
-                                <h2>{selectedSubject}</h2>
-                              </Card.Title>
-                              <Card.Text>Jadwal:</Card.Text>
-                              <Card.Text>Tentor:</Card.Text>
-                              <Card.Text></Card.Text>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
+                {selectedSubject === kelas.title && renderSubjectInfo()}
                 <div className="ket d-flex justify-content-between align-items-center px-3 pb-3"></div>
               </Col>
             ))}
           </Row>
+          {/* Tambahkan ruang antara kolom informasi kelas dan pertanyaan yang sering ditanyakan */}
+          <Row className="mt-5">
+            <Col>
+              <hr />
+            </Col>
+          </Row>
         </Container>
       </div>
-      <FaqComponent/>
+      <FaqComponent />
     </div>
   );
 };

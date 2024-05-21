@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { semuaKelas } from "../data/index";
 import FaqComponent from "../component/FaqComponent";
-import "../../main.css"
+import "../../main.css";
+
+
 const Classpages = () => {
   const [selectedSubject, setSelectedSubject] = useState(null);
 
@@ -76,8 +78,8 @@ const Classpages = () => {
                               <Card.Title>
                                 <h2>{selectedSubject}</h2>
                               </Card.Title>
-                              <Card.Text>Jadwal: {subjectInfo.jadwal}</Card.Text>
-                              <Card.Text>Tentor: {subjectInfo.tentor}</Card.Text>
+                              <Card.Text>Jadwal  {subjectInfo.jadwal}</Card.Text>
+                              <Card.Text>Tentor  {subjectInfo.tentor}</Card.Text>
                               <Card.Text>{subjectInfo.informasiLainnya}</Card.Text>
                             </Card.Body>
                           </Card>
@@ -93,6 +95,7 @@ const Classpages = () => {
         </Container>
       </div>
       <FaqComponent subjectInfo={subjectInfo} />
+
     </div>
   );
 };

@@ -49,8 +49,8 @@ export const navLinks = [
   },
   {
     id: 4,
-    path: "Lainnya",
-    text: "Menu Lainnya",
+    path: "testimonial",
+    text: "Testimonial",
   },
   {
     id: 5,
@@ -130,7 +130,7 @@ export const kelasTerbaru = [
     id: 1,
     image: KelasImage1,
     title: "Pendidikan Agama Islam",
-    delay: "",
+    delay: "200",
   },
   {
     id: 2,
@@ -323,7 +323,7 @@ export const faq = [
   {
     id: 8,
     eventKey: 7,
-    title: "Apakah bisa mengganti jadwal bimbingan secara mendadak karena ada halangan?",
+    title: "Apakah bisa mengganti jadwal bimbingan secara mendadak?",
     desc: "Ya. Sesuai dengan kesepakatan antara siswa dan juga tentor.",
   },
 ];

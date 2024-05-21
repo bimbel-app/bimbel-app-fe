@@ -11,6 +11,7 @@ const Datasiswa = ()=>{
             try {
             const res = await axios.get(url)
             setSiswa(res.data);
+            console.log(res.data)
             } catch (error) {
                 console.error(error)
             }
@@ -24,9 +25,16 @@ const Datasiswa = ()=>{
     <thead>
       <tr>
         <th scope="col">Nama</th>
-        <th scope="col">Asal Sekolah</th>
-        <th scope="col">Pendidikan</th>
+        <th scope="col">Tempat dan Tanggal Lahir</th>
+        <th scope="col">Jenis Kelamin</th>
         <th scope="col">Alamat</th>
+        <th scope="col">Nama Sekolah</th>
+        <th scope="col">Jenjang Pendidikan</th>
+        <th scope="col">Kelas</th>
+        <th scope="col">Nama Orang Tua</th>
+        <th scope="col">Nomor Handphone</th>
+        <th scope="col">Kekurangan</th>
+        <th scope="col">Catatan</th>
       </tr>
     </thead>
     <tbody>
@@ -35,9 +43,16 @@ const Datasiswa = ()=>{
             return(
             <tr key={i.id_siswa}>
                 <td>{i.nama}</td>
-                <td>{i.asal_sekolah}</td>
-                <td>{i.pendidikan}</td>
+                <td>{i.ttl}</td>
+                <td>{i.jk}</td>
                 <td>{i.alamat}</td>
+                <td>{i.nama_sekolah}</td>
+                <td>{i.jenjang}</td>
+                <td>{i.kelas}</td>
+                <td>{i.nama_ortu}</td>
+                <td>{i.no_hp}</td>
+                <td>{i.kekurangan}</td>
+                <td>{i.catatan}</td>
             </tr>
             )
         })}

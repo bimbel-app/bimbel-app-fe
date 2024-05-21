@@ -7,6 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink } from 'react-router-dom'
 import { AuthContext } from '../context/auth.context-copy';
 import { navLinks } from '../data';
+import "../main";
 
 function BasicExample() {
   const auth = useContext(AuthContext);
@@ -25,21 +26,19 @@ function BasicExample() {
         <Navbar.Brand href="#home">Bimbel Zinda</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mx-auto text-center">
-              {updatedNavLinks.map((link) => (
-                <div className="nav-link" key={link.id}>
-                  <NavLink
-                    to={link.path}
-                    className={({ isActive, isPending }) =>
-                      isPending ? "pending" : isActive ? "active" : ""
-                    }
-                    end
-                  >
-                    {link.text}
-                  </NavLink>
-                </div>
-              ))}
-            </Nav>
+          <Nav className="mx-auto text-center">
+            {updatedNavLinks.map((link) => (
+              <NavLink
+                to={link.path}
+                className="nav-link"
+                activeClassName="active"
+                key={link.id}
+                exact={link.exact}
+              >
+                {link.text}
+              </NavLink>
+            ))}
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

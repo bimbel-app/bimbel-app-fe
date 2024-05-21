@@ -2,7 +2,7 @@ export const NotFound = ()=>{
     
     return(
         <>
-        <h1>REP NGENDI SU</h1>
+        <h1>404 NOT FOUND</h1>
         </>
     )
 }
